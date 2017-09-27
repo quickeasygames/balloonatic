@@ -1,0 +1,733 @@
+body {
+	background-color: #666666;
+	--power:256;
+	--cvsSize:192;
+	--attachment:96;
+	--leftPadding:96;
+	--smlCvsSize:24;
+	--btnSize:96;
+	--largeFont: 64;
+	--speed: 1;
+}
+.gamelogo {
+	position: absolute;
+	width: 320px;
+	height: 200px;
+	top: calc(50% - 260px);
+	left: calc(50% - 160px);
+	background-image:url("logo02.png"); 
+	background-size: contain;  
+    background-position: center;  
+	background-repeat:no-repeat; 
+}
+.loader {
+	position: absolute;
+	background-color: #666666;
+  border: 12px solid #777777;
+  border-radius: 50%;
+  border-top: 12px solid #ff9933;
+  width: 120px;
+  height: 120px;
+	top: calc(50% - 60px);
+   left: calc(50% - 60px);
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.popupwindow { 
+	position: absolute;
+	padding: 10px; 
+	width: 320px; 
+	height: auto; 
+	border: 2px solid #c2c2c2; 
+	background-color: #FFEFEF;
+	margin: 50% 50%;
+	border-radius: 10px; 
+	z-index: 403;
+}
+.splashpage{
+	background-color: #99ccff;
+	background-image:url("splashLand.jpg"); 
+	background-size: contain;  
+	background-attachment: fixed;
+    background-position: center;  
+	background-repeat:no-repeat; 
+	z-index: 500;
+}
+.intropage{
+	background-color: #99ccff;
+	background-image:url("infoBGLand.jpg"); 
+	background-size: contain;  
+	background-attachment: fixed;
+    background-position: center;  
+	background-repeat:no-repeat; 
+	z-index: 500;
+}
+.btn {
+	position: absolute;
+	background-image:url("play.png"); 
+	background-repeat: no-repeat;
+	background-size: contain;
+	bottom: 2%;
+	right: 25%;
+	width: 226px;
+	height: 90px;
+	cursor:pointer;
+	
+}
+.btn:hover {
+	width: 222px;
+	height: 86px;
+	bottom: calc(2% + 2px);
+	right: calc(25% + 2px);
+}
+.homebtn {
+	position: absolute;
+	background-image:url("quickeasygames.jpg"); 
+	background-color: #3398cc;
+	background-repeat: no-repeat;
+	border: 2px solid #3398cc;
+	bottom: 2%;
+	left: 50%;
+	width: 320px;
+	height: 56px;
+	cursor:pointer;
+	
+}
+.homebtn:hover {
+	border: none;
+}
+.smlbtn {
+	position: absolute;
+    overflow: hidden;
+	width: 64px;
+	height: 64px;
+	top: 0px;
+	z-index: 600;
+    cursor:pointer;
+}
+.pos01 {
+	left: calc(100% - 128px);
+}
+.pos02 {
+	left: calc(100% - 200px);
+}
+.pos03 {
+	left: calc(100% - 272px);
+}
+.scorebox {
+	position: absolute;
+	top: 0px;
+	margin: 6px;
+	color: #ffff33;
+	text-shadow: 2px 2px 2px #000000;
+    height: 32px; 
+	width: auto;
+    min-width: 32px;
+	max-width: 128px;
+	background-image:url("star.png");   
+	background-position:left;   
+	background-repeat:no-repeat;   
+	padding:4px 4px 0px 32px;
+	text-align: center;
+	margin: 4px 4px;
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+	z-index: 401;
+}
+.instructions {
+	position: absolute;
+	color: #ffff33;
+	text-shadow: 2px 2px 2px #000000;
+    height: auto;
+	width: 50%;
+	bottom:40%;
+	left: 50%;
+	text-align: center;
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	z-index: 402;
+	display: block;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+
+}
+
+.splashText {
+	position: absolute;
+	color: #ffff33;
+	text-shadow: 2px 2px 2px #000000;
+    height: auto;
+	width: 90%;
+	max-width: 720px;
+	top: 50%;
+	left: 50%;
+	text-align: left;
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	z-index: 402;
+	display: block;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+
+}
+
+.moveDiv {
+	-webkit-animation: mymove 0.3s ease-in-out; /* Safari 4.0 - 8.0 */
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+    animation: moveup 0.3s ease-in-out;
+	/*-webkit-animation-play-state: running; /* Chrome, Safari, Opera */
+	/*animation-play-state: running;*/
+}
+@-webkit-keyframes moveup {
+    from {bottom: 10%;}
+    to {bottom: 40%;}
+}
+
+@keyframes moveup {
+    from {bottom: 5%;}
+    to {bottom: 40%;}
+}
+@-webkit-keyframes movedown {
+    from {bottom: 5%;}
+    to {bottom: 10%;}
+}
+
+@keyframes movedown {
+    from {bottom: 40%;}
+    to {bottom: 5%;}
+}
+.toprighttext {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	margin: 6px;
+	color: #ffff33;
+	text-shadow: 2px 2px 2px #000000;
+    height: 64px; 
+	width: auto;
+    min-width: 32px;
+	max-width: 128px; 
+	padding: 4px;
+	text-align: center;
+	margin: 4px 4px;
+	padding:4px 24px 0px 4px;
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+	z-index: 403;
+}
+.bg {
+	position: absolute;
+	background-image: url("background.jpg");
+	background-size:1px 100%;
+    background-repeat: repeat-x;
+	background-color: #d8cfbc;
+	z-index: 0;
+}
+
+.img01 {
+	position: absolute;
+	background-image: url("tree01.png");
+	background-repeat: no-repeat;
+	background-size:auto 100%;
+	background-position:left bottom;
+	z-index: 2;
+
+}
+.img02 {
+	position: absolute;
+	background-image: url("cloud.png");
+	background-repeat: no-repeat;
+	background-size:auto 50%;
+	background-position:right top;
+	z-index: 1;
+}
+.slingshot {
+	position:absolute;
+	background-image: url("slingShot.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position:right top;
+	width:192px;
+	height:256px;
+	left:calc(50% - 96px);
+	top:60%;
+	z-index: 200;
+}
+.rot {
+	position: absolute;
+  	transform-origin: -50%, 0%;
+	transform: rotate(0deg);
+  	-ms-transform-origin: -50%, 0%;
+	-ms-transform: rotate(0deg);
+  	-webkit-transform-origin: -50%, 0%;
+	-webkit-transform: rotate(0deg);
+}
+.topoffset {
+	position: absolute;
+  	transform: translate(-50%, 0%);
+  	transform: -webkit-translate(-50%, 0%);
+  	transform: -moz-translate(-50%, 0%);
+  	transform: -ms-translate(-50%, 0%);
+}
+.offscreen {
+	position: absolute;
+  	transform: translate(-10000px);
+  	transform: -webkit-translate(-10000px);
+  	transform: -moz-translate(-10000px);
+  	transform: -ms-translate(-10000px);
+}
+.offset {
+	position: absolute;
+	transform: translate(-50%, -50%);
+  	transform: -webkit-translate(-50%, -50%);
+  	transform: -moz-translate(-50%, -50%);
+  	transform: -ms-translate(-50%, -50%);
+}
+.paintlayer {
+	z-index: 201;
+}
+.circle {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	background: #663333;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	z-index: 202;
+}
+.noscroll {
+	overflow: hidden;
+}
+.container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.balloonSize {
+position: absolute;
+width:15%;	
+height:auto;
+max-width: 192px;
+max-height: 192px;
+}
+@keyframes rot {
+	from {
+		transform: rotate(0deg)
+		           translate(-150px)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-150px) 
+		           rotate(-360deg);
+	}
+}
+.rotation {
+	animation: rot 30s infinite linear;
+}
+@media only screen and (max-width: 480px) and (orientation:landscape) {
+body {
+	--power:112;
+	--cvsSize:96;
+	--attachment:48;
+	--leftPadding:64;
+	--smlCvsSize:12;
+	--btnSize:48;
+	--largeFont: 24;
+	--speed: 1;
+}
+.smlbtn {
+	width: 48px;
+	height: 48px;
+}
+.pos01 {
+	left: calc(100% - 80px);
+}
+.pos02 {
+	left: calc(100% - 160px);
+}
+.pos03 {
+	left: calc(100% - 240px);
+}
+.intropage{
+	background-image:url("infoBGLand.jpg");
+}
+.splashpage {  
+	background-image:url("splashLand.jpg"); 
+	}
+.splashText {
+	font: bold 16px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	}
+.scorebox {
+    height: 32px; 
+    min-width: 32px;
+	max-width: 128px;
+}
+.toprighttext {
+    height: 32px; 
+    min-width: 32px;
+	max-width: 128px;
+}
+.balloonSize {
+	width: 96px;
+	height: 96px;
+	}
+.img01 {
+	background-size:auto 100%;
+	background-position:left bottom;
+
+	}
+
+.slingshot {
+	width:96px;
+	height:128px;
+	left:calc(50% - 48px);
+	}
+.instructions {
+	font: bold 16px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+	}
+}
+@media only screen and (min-width: 481px) and (max-width: 800px) and (orientation:landscape) {
+body {
+	--power:160;
+	--cvsSize:96;
+	--attachment:72;
+	--leftPadding:64;
+	--smlCvsSize:16;
+	--btnSize:64;
+	--largeFont: 36;
+	--speed: 2;
+}
+.smlbtn {
+	width: 64px;
+	height: 64px;
+}
+.pos01 {
+	left: calc(100% - 80px);
+}
+.pos02 {
+	left: calc(100% - 160px);
+}
+.pos03 {
+	left: calc(100% - 240px);
+}
+.intropage{
+	background-image:url("infoBGLand.jpg");
+}
+.splashpage { 
+	background-image:url("splashLand.jpg"); 
+}
+.splashText {
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.scorebox {
+    height: 64px; ;
+    min-width: 64px;
+	max-width: 256px;
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.toprighttext {
+    height: 64px; ;
+    min-width: 64px;
+	max-width: 256px;
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.balloonSize {
+	width: 96px;
+	height: 96px;
+	}
+.img01 {
+	background-size:auto 100%;
+	background-position:left bottom;
+	}
+.slingshot {
+	width:144px;
+	height:192px;
+	left:calc(50% - 72px);
+	}
+.instructions {
+
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+	}
+}
+@media only screen and (min-width: 801px) (orientation:landscape) {
+body {
+	--power:256;
+	--cvsSize:192;
+	--attachment:32;
+	--leftPadding:96;
+	--smlCvsSize:24;
+	--btnSize:96;
+	--largeFont: 64;
+	--speed: 3;
+}
+.smlbtn {
+	width: 96px;
+	height: 96px;
+}
+.pos01 {
+	left: calc(100% - 128px);
+}
+.pos02 {
+	left: calc(100% - 256px);
+}
+.pos03 {
+	left: calc(100% - 384px);
+}
+	
+.splashpage { 
+	background-image:url("splashLand.jpg"); 
+}
+.intropage{
+	background-image:url("infoBGLand.jpg");
+}
+	
+.splashText {
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.scorebox {
+    height: 64px; 
+	width: auto;
+    min-width: 64px;
+	max-width: 256px;
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+	
+.balloonSize {
+	width: 192px;
+	height: 192px;
+	}
+.img01 {
+	background-size:auto 100%;
+	background-position:left bottom;
+
+	}
+
+.slingshot {
+		width:192px;
+		height:256px;
+		left:calc(50% - 96px);
+	}
+.instructions {
+
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+	}
+}
+@media only screen and (max-width: 320px) and (orientation:portrait) {
+	body {
+		--power:112;
+		--cvsSize:80;
+		--attachment:48;
+		--leftPadding:12;
+		--smlCvsSize:12;
+		--btnSize:48;
+		--largeFont: 24;
+		--speed: 1;
+	}
+.smlbtn {
+	width: 48px;
+	height: 48px;
+}
+.pos01 {
+	left: calc(100% - 64px);
+}
+.pos02 {
+	left: calc(100% - 128px);
+}
+.pos03 {
+	left: calc(100% - 192px);
+}
+.splashpage { 
+	background-image:url("splashPort.jpg"); 
+}
+.intropage{
+	background-image:url("infoBGPort.jpg");
+}
+.splashText {
+	font: bold 16px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.scorebox {
+		height: 32px; 
+		min-width: 32px;
+		max-width: 128px;
+		font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.toprighttext {
+		height: 32px; 
+		min-width: 32px;
+		max-width: 128px;
+		font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.balloonSize {
+		width: 80px;
+		height: 80px;
+}
+.img01 {
+		background-size:auto 100%;
+		background-position:-200px bottom;
+
+}
+
+.slingshot {
+		width:96px;
+		height:128px;
+		left:calc(50% - 48px);
+}
+.instructions {
+
+	font: bold 16px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+}
+}
+@media only screen and (min-width: 321px) and (max-width: 600px) and (orientation:portrait) {
+body {
+	--power:144;
+	--cvsSize:96;
+	--attachment:72;
+	--leftPadding:24;
+	--smlCvsSize:16;
+	--btnSize:64;
+	--largeFont: 36;
+	--speed: 1;
+}
+.smlbtn {
+	width: 64px;
+	height: 64px;
+}
+.pos01 {
+	left: calc(100% - 80px);
+}
+.pos02 {
+	left: calc(100% - 160px);
+}
+.pos03 {
+	left: calc(100% - 240px);
+}
+.splashpage { 
+	background-image:url("splashPort.jpg"); 
+}
+.intropage{
+	background-image:url("infoBGPort.jpg");
+}
+.splashText {
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.scorebox {
+    height: 64px; 
+    min-width: 64px;
+	max-width: 256px;
+	font: bold 30px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+.balloonSize {
+	width: 96px;
+	height: 96px;
+	}
+.img01 {
+	background-size:auto 100%;
+	background-position:-150px bottom;
+
+	}
+.slingshot {
+		width:144px;
+		height:192px;
+		left:calc(50% - 72px);
+	}
+.instructions {
+
+	font: bold 24px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+	}
+}
+@media only screen and (min-width: 601px) and (orientation:portrait) {
+	body {
+		--power:256;
+		--cvsSize:128;
+		--attachment:96;
+		--leftPadding:96;
+		--smlCvsSize:24;
+		--btnSize:96;
+		--largeFont: 64;
+		--speed: 2;
+	}
+.smlbtn {
+	width: 96px;
+	height: 96px;
+}
+.pos01 {
+	left: calc(100% - 112px);
+}
+.pos02 {
+	left: calc(100% - 224px);
+}
+.pos03 {
+	left: calc(100% - 336px);
+}
+.splashpage { 
+	background-image:url("splashPort.jpg"); 
+}
+.intropage{
+	background-image:url("infoBGPort.jpg");
+}
+.splashText {
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+}
+	.scorebox {
+		height: 64px; 
+		min-width: 64px;
+		max-width: 256px;
+		font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	}
+	.toprighttext {
+		height: 64px; 
+		min-width: 64px;
+		max-width: 256px;
+		font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	}
+	.balloonSize {
+		width: 128px;
+		height: 128px;
+		}
+	.img01 {
+		background-size:auto 100%;
+		background-position:-100px bottom;
+
+	}
+
+	.slingshot {
+		width:192px;
+		height:256px;
+		left:calc(50% - 96px);
+	}
+.instructions {
+
+	font: bold 36px Comic Sans MS, Century Gothic, Helvetica, Verdana, Tahoma;
+	
+	}
+}
